@@ -1,0 +1,205 @@
+ID,Title,Section,Priority,Type,Automation Type,Preconditions,Steps,Expected Result,Estimated Time
+TL-001,Header Navigation - Logo Click,Homepage > Navigation,Critical,Smoke,Automated,"- User is on any page of the website
+- Browser is loaded","1. Navigate to https://testifysolutions.net/
+2. Locate the Testify logo in the header
+3. Click the logo","- Page reloads/stays on homepage
+- URL remains https://testifysolutions.net/
+- No console errors",30s
+TL-002,Header Navigation - Menu Links Functional,Homepage > Navigation,Critical,Functional,Automated,"- Homepage is loaded
+- All menu items are visible","1. Navigate to homepage
+2. Identify all navigation links: Home, About, Blog, Contact Us, Talent
+3. Click each link sequentially
+4. Verify destination page loads","- Home: Stays on homepage
+- About: testifysolutions.net/about/ loads
+- Blog: testifysolutions.net/our-news/ loads
+- Contact Us: testifysolutions.net/contact/ loads
+- Talent: LinkedIn jobs opens in new tab
+- No broken links (404 errors)
+- Page transition is smooth (<2s load time)
+- Back button returns to homepage",3m
+TL-003,Header Navigation - Marketplace Button,Homepage > Navigation,Critical,Functional,Automated,"- Homepage loaded
+- Marketplace button visible in header","1. Locate 'MARKETPLACE' button in header
+2. Verify button styling (distinct from nav links)
+3. Click button
+4. Verify destination page","- Button has distinct visual styling
+- Redirects to testifysolutions.net/marketplace/
+- Marketplace page loads successfully
+- Button remains highlighted/active on marketplace page",1m
+TL-004,Navigation - Mobile Responsiveness,Homepage > Navigation,High,Responsive,Automated,"- Viewport set to mobile dimensions (375x667 iPhone SE)","1. Resize browser to mobile viewport
+2. Verify hamburger menu appears
+3. Click hamburger icon
+4. Verify menu slides out/appears
+5. Click each navigation item
+6. Verify menu closes after selection","- Desktop navigation hidden
+- Hamburger icon visible and clickable
+- Menu overlay/drawer appears
+- All links remain functional
+- Menu auto-closes after selection
+- Logo remains visible and functional",2m
+TL-005,Hero - Primary Value Proposition Display,Homepage > Hero Section,Critical,Visual,Automated,"- Homepage loaded
+- Hero section visible above fold","1. Navigate to homepage
+2. Verify headline text: 'Enhance Your Software Product With Our Quality Guarantee!'
+3. Verify subheadline: 'Elevate your SDLC with our proprietary testing framework...'
+4. Verify badge: 'Software Testing & Quality Assurance on-Demand'
+5. Verify three checkmark bullets are visible","- All text renders correctly (no truncation)
+- Typography is consistent (Poppins font)
+- Text is centered
+- Checkmarks visible: Seamless Integration & Proven Results, 1000+ Successful Deployments, Boost Developer & Team Efficiency",1m
+TL-006,Hero - Image Triptych Display,Homepage > Hero Section,High,Visual,Automated,"- Homepage loaded
+- Images section visible","1. Scroll to image section (if needed)
+2. Verify three images are visible side-by-side
+3. Check image aspect ratios
+4. Verify center image is the Testify logo","- Three images visible
+- Layout: [Office photo] [Testify Logo] [Team photo]
+- Images are properly sized and aligned
+- No broken image icons
+- Images load within 3 seconds on 3G",1m
+TL-007,Hero - CTA Buttons Functional,Homepage > Hero Section,Critical,Functional,Automated,"- Hero section loaded","1. Identify primary CTA button (if visible in hero)
+2. Verify button text and styling
+3. Click button
+4. Verify expected action","- Button is visually prominent
+- Hover state changes appearance
+- Click redirects to appropriate page (Contact or Marketplace)
+- No JavaScript errors in console",1m
+TL-008,Features - Three Column Layout,Homepage > Features Section,High,Visual,Automated,"- Page scrolled to 'On-Demand Software Quality Assurance' section","1. Scroll to features section
+2. Verify section heading: 'On-Demand Software Quality Assurance'
+3. Count feature cards (should be 3)
+4. Verify each card has icon/title, subheading, description text","- Speed: Same Day Turnaround Time - 'Service-first architecture allows for same day deliverables'
+- Flexibility: Quality Delivered on Your Schedule - 'Recruit expert help only when you need it'
+- Reliability: Top Quality Service Providers - 'Request fulfillment based on formalized QA protocol'
+- Cards are evenly spaced
+- Grid effects visible
+- Text is readable",2m
+TL-009,Features - Responsive Behavior,Homepage > Features Section,High,Responsive,Automated,"- Viewport set to mobile (375px width)","1. Set viewport to mobile (375px width)
+2. Scroll to features section
+3. Verify layout changes to single column","- Cards stack vertically
+- All content remains readable
+- No horizontal scrolling
+- Spacing between cards is consistent",1m
+TL-010,Social Proof - Partner Logos Display,Homepage > Social Proof,Medium,Visual,Automated,"- Page scrolled to partner logos section","1. Scroll to logos section (after features)
+2. Count visible logos
+3. Verify logo clarity and sizing","- Three logos visible: Moralis, Solana, Chainlink
+- Logos are crisp (SVG or high-res PNG)
+- Logos are evenly distributed
+- Section has subtle background styling",1m
+TL-011,Social Proof - Logo Links,Homepage > Social Proof,Low,Functional,Automated,"- Logos section visible","1. Hover over each logo
+2. Check for cursor change (pointer)
+3. Click logo (if clickable)
+4. Verify external link behavior","- If clickable: Opens partner website in new tab
+- If not clickable: Acts as static image (acceptable)",1m
+TL-012,Marketplace CTA - Content Display,Homepage > Marketplace CTA,Critical,Visual,Automated,"- Scrolled to dark-themed section with background image","1. Scroll to 'Try On-Demand quality assurance...' section
+2. Verify headline: 'Try On-Demand quality assurance and software testing services via the vendor marketplace'
+3. Verify feature callouts: 24/7 Availability, Immutable Guarantee
+4. Verify background image loads","- Dark theme section is visually distinct
+- White text is readable over dark background
+- Background image overlay is properly applied
+- Gradient or dimming effect makes text stand out",1m
+TL-013,Marketplace CTA - Schedule Demo Button,Homepage > Marketplace CTA,Critical,Functional,Automated,"- Marketplace CTA section visible","1. Locate 'Schedule Demo' button in marketplace section
+2. Verify button styling (should be prominent)
+3. Hover to see hover state
+4. Click button
+5. Verify destination","- Button redirects to: testifysolutions.net/contact/#booking-app
+- Page scrolls to booking widget/form
+- Booking interface is visible and functional
+- URL hash (#booking-app) is preserved",1m
+TL-014,FAQ - Accordion Functionality,Homepage > FAQ Section,High,Functional,Automated,"- Scrolled to FAQ section","1. Identify FAQ section (heading: 'FAQ')
+2. Count total FAQ items
+3. Click first FAQ question
+4. Verify answer expands
+5. Click second FAQ question
+6. Verify behavior (collapse first or keep open)
+7. Click expanded question to collapse","- All FAQ questions visible by default (collapsed)
+- Clicking question reveals answer smoothly
+- Visual indicator shows expanded state (+/- icon or arrow)
+- Answer text is fully readable when expanded
+- Re-clicking question collapses answer",2m
+TL-015,FAQ - Content Accuracy,Homepage > FAQ Section,High,Content,Manual,"- FAQ section visible","1. Expand each FAQ
+2. Read full answer text
+3. Verify no truncation
+4. Check for typos or formatting issues","- All answers complete (no '...' or cut-off text)
+- Grammar and spelling are correct
+- Links within answers (if any) are functional
+- Contact information is accurate
+- 6 FAQ items: How to get started, Is there any commitment required, What if I'm not satisfied, How does billing work, Are there more permanent solutions, Will services scale",3m
+TL-016,FAQ - Let's Chat CTA,Homepage > FAQ Section,High,Functional,Automated,"- FAQ section visible","1. Scroll to bottom of FAQ
+2. Locate 'More questions? Have some suggestions?' section
+3. Verify 'Let's Chat' button
+4. Click button
+5. Verify redirect","- Button redirects to contact page
+- Contact form is visible and functional",1m
+TL-017,Footer - Column Structure,Homepage > Footer,Medium,Visual,Automated,"- Page fully loaded, scrolled to footer","1. Scroll to page footer
+2. Identify footer columns
+3. Verify headings and links in each column","- Column 1: Logo/brand, social icons (LinkedIn, Email, Telegram, X)
+- Column 2 Company: About, Blog, Community, Contact Us
+- Column 3 Resources: Documentation, Newsletter, Talent, Whitepaper
+- Column 4 Disclaimers: Cookie Policy, FAQ, Privacy Policy, Terms of Service
+- Copyright: '2025 Testify Solutions Inc © All rights reserved'",2m
+TL-018,Footer - Social Media Links,Homepage > Footer,High,Functional,Automated,"- Footer visible","1. Identify social icons in footer
+2. Hover over each icon (verify tooltip/title)
+3. Click each icon
+4. Verify destination","- LinkedIn: linkedin.com/company/testify-labs (new tab)
+- Email: mailto:testifysolutionsinc@gmail.com (email client)
+- Telegram: t.me/+v_C6tXYEL6kxZGFh (new tab)
+- X: x.com/Testify_Labs (new tab)
+- Links open in new tab (target='_blank')
+- Email opens default client with address pre-filled",2m
+TL-019,Footer - Navigation Links Functional,Homepage > Footer,High,Functional,Automated,"- Footer visible","1. Click each link in footer columns
+2. Verify page loads correctly
+3. Test back button functionality","- All internal links load correct pages
+- External links (Discord, LinkedIn Jobs) open in new tab
+- PDF/document links (Whitepaper) download or open correctly
+- No 404 errors
+- Priority links verified: Contact Us, Whitepaper, Privacy Policy, Terms of Service",3m
+TL-020,Footer - Responsive Behavior,Homepage > Footer,Medium,Responsive,Automated,"- Viewport set to mobile (375px)","1. Set viewport to mobile (375px)
+2. Scroll to footer
+3. Verify column layout","- Columns stack vertically
+- All links remain clickable
+- Text is readable (no overlap)
+- Social icons remain accessible",1m
+TL-021,Invalid URL Handling,Homepage > Negative Tests,Medium,Negative,Automated,"- Browser ready","1. Navigate to testifysolutions.net/invalid-page-12345
+2. Verify 404 page appears
+3. Check for navigation options to return to site","- Custom 404 page (not generic server error)
+- 404 page maintains site branding
+- Links to homepage/main sections available
+- User is not stranded",1m
+TL-022,Broken Image Handling,Homepage > Negative Tests,Low,Negative,Automated,"- Homepage loaded","1. Use browser DevTools to block images
+2. Reload homepage
+3. Verify alt text appears for key images","- Alt text describes image content
+- Layout does not break without images
+- Testify logo shows alt text: 'Testify Labs'",1m
+TL-023,JavaScript Disabled,Homepage > Negative Tests,Low,Negative,Manual,"- JavaScript disabled in browser","1. Disable JavaScript in browser
+2. Navigate to homepage
+3. Verify core content is visible","- Static content (text, images) loads
+- Navigation links work (anchor tags)
+- Forms may not submit (acceptable)
+- No blank sections or complete failures",2m
+TL-024,Slow Network Performance,Homepage > Edge Cases,Medium,Performance,Automated,"- Network throttling enabled","1. Set network throttling to 'Slow 3G' in DevTools
+2. Load homepage
+3. Observe loading behavior","- Critical content loads within 10 seconds
+- Loading indicators shown (if applicable)
+- Images load progressively
+- No timeouts or failed requests
+- User can begin interacting before full page load",3m
+TL-025,Very Small Screen (320px),Homepage > Edge Cases,Low,Responsive,Automated,"- Viewport set to 320px x 568px","1. Set viewport to 320px x 568px (iPhone SE 1st gen)
+2. Navigate through homepage
+3. Verify all elements fit","- No horizontal scrolling
+- All text readable (not too small)
+- Buttons remain tappable (min 44x44px touch target)
+- Images scale appropriately",2m
+TL-026,Very Large Screen (4K),Homepage > Edge Cases,Low,Responsive,Automated,"- Viewport set to 3840px x 2160px","1. Set viewport to 3840px x 2160px
+2. Load homepage
+3. Check content centering and max-width","- Content is centered or constrained (not stretched full width)
+- Max container width applied (~1800px)
+- Background patterns/gradients fill screen
+- No excessive whitespace around content",1m
+TL-027,Browser Back Button After Form Submission,Homepage > Edge Cases,Medium,Navigation,Automated,"- Contact form submitted","1. Navigate: Homepage → Contact Page
+2. Submit contact form
+3. Click browser back button","- Returns to contact page (not form submission)
+- Form is blank or shows 'form already submitted' message
+- No duplicate submission occurs
+- User can navigate freely",2m
+TL-028,Deep Linking with Hash,Homepage > Edge Cases,Medium,Navigation,Automated,"- Browser ready","1. Navigate directly to testifysolutions.net/#faq
+2. Verify page scrolls to FAQ section
+3. Test other hash links: #intro, #area-of-practice","- Page loads and auto-scrolls to target section
+- Section is visible (not hidden behind fixed header)
+- Smooth scroll animation (if implemented)",1m
