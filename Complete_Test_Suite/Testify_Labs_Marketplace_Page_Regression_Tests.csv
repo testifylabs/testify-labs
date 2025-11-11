@@ -1,0 +1,389 @@
+ID,Title,Section,Priority,Type,Automation Type,Preconditions,Steps,Expected Result,Estimated Time
+TL-087,Marketplace Page - Page Load,Marketplace Page > Page Load,Critical,Smoke,Automated,"- Browser ready","1. Navigate to https://testifysolutions.net/marketplace/
+2. Wait for page load
+3. Verify page title","- Page loads within 3 seconds
+- Page title contains 'Marketplace'
+- No 404 or 500 errors
+- Main content visible
+- Header and footer loaded",1m
+TL-088,Marketplace - Service Listings Display,Marketplace Page > Service Listings,Critical,Visual,Automated,"- Marketplace page loaded","1. Scroll through service listings
+2. Count number of services displayed
+3. Verify each listing has required info","- Multiple services listed (at least 3-5 visible)
+- Each service shows: Title, Description, Price, Provider
+- Services organized in grid or list
+- Images or icons for each service (optional)
+- Clear visual hierarchy",2m
+TL-089,Marketplace - Service Categories,Marketplace Page > Navigation,High,Functional,Automated,"- Marketplace page loaded","1. Locate category filter or navigation
+2. Verify all categories are listed
+3. Click on each category
+4. Verify filtering works","- Categories visible: 'All Services', 'Testing', 'QA', 'Automation', etc.
+- Clicking category filters services
+- Service count updates per category
+- 'All' shows all services
+- Active category highlighted",2m
+TL-090,Marketplace - Search Functionality,Marketplace Page > Search,High,Functional,Automated,"- Marketplace page loaded","1. Locate search box
+2. Enter search term: 'manual testing'
+3. Verify results filter
+4. Try another search: 'automation'
+5. Clear search","- Search box prominently placed
+- Results filter as you type (or after submit)
+- Relevant services shown
+- Search is case-insensitive
+- Clear/reset button works
+- No results message if no matches",2m
+TL-091,Marketplace - Service Detail View,Marketplace Page > Service Details,Critical,Functional,Automated,"- Marketplace page loaded","1. Click on a service listing
+2. Verify detail page or modal opens
+3. Review all information displayed","- Detail view opens (new page or modal)
+- Full service description visible
+- Pricing clearly stated
+- Service provider info shown
+- Features/deliverables listed
+- Estimated delivery time shown
+- CTA button: 'Purchase' or 'Request Service'",2m
+TL-092,Marketplace - Pricing Display,Marketplace Page > Pricing,Critical,Visual,Automated,"- Service listings visible","1. Review pricing for each service
+2. Verify currency and format
+3. Check for tiered pricing (if applicable)","- Price displayed clearly for each service
+- Currency symbol: $ (USD) or SOL (Solana)
+- Format: '$99.00' or '5 SOL'
+- Tiered pricing explained if applicable
+- 'Starting at' vs 'Fixed price' clear
+- No hidden fees mentioned",2m
+TL-093,Marketplace - Service Purchase Flow,Marketplace Page > Purchase,Critical,Functional,Automated,"- Logged in (or guest checkout available)
+- Service selected","1. Click 'Purchase' or 'Buy Now' on service
+2. Review order summary
+3. Proceed to payment
+4. Complete checkout","- Order summary shows: Service, Price, Provider
+- Checkout flow initiated
+- Payment options available (crypto/traditional)
+- Confirmation page after purchase
+- Confirmation email sent
+- Order added to user dashboard (if logged in)",5m
+TL-094,Marketplace - Web3 Wallet Connection,Marketplace Page > Web3 Integration,Critical,Functional,Automated,"- Marketplace page loaded
+- Web3 wallet (Phantom, MetaMask) installed","1. Click 'Connect Wallet' button
+2. Authorize wallet connection
+3. Verify wallet address displayed
+4. Check SOL balance shows (if applicable)","- Wallet connection prompt appears
+- User can select wallet type
+- Connection successful message
+- Wallet address displayed (truncated): '7xK...3mP'
+- User remains connected during session
+- Disconnect option available",3m
+TL-095,Marketplace - Solana Payment Processing,Marketplace Page > Payments,Critical,Functional,Manual,"- Wallet connected
+- Service selected for purchase
+- SOL balance sufficient","1. Proceed to purchase service with SOL
+2. Confirm transaction in wallet
+3. Wait for blockchain confirmation
+4. Verify purchase confirmation","- Transaction details shown: Amount in SOL, recipient address
+- Gas fees displayed
+- User confirms in wallet (Phantom/MetaMask)
+- Transaction processes on Solana blockchain
+- Confirmation within 1-2 seconds (Solana speed)
+- Service access granted after confirmation",5m
+TL-096,Marketplace - Escrow System Display,Marketplace Page > Escrow,Critical,Visual,Automated,"- Service purchase flow initiated","1. Review purchase details
+2. Verify escrow information is displayed
+3. Check escrow terms","- Escrow explained: 'Payment held until service delivered'
+- Terms clearly stated: conditions for release
+- Timeline shown: 'Funds released after 7 days or upon approval'
+- Dispute process mentioned
+- Trust badge or indicator",2m
+TL-097,Marketplace - Service Provider Profile,Marketplace Page > Provider Info,High,Functional,Automated,"- Marketplace page loaded","1. Click on service provider name
+2. Verify provider profile page loads
+3. Review profile information","- Provider profile opens
+- Information shown: Name, Bio, Rating, Reviews
+- Services offered by provider listed
+- Contact option available
+- Verification badge (if applicable)
+- Join date or experience level",2m
+TL-098,Marketplace - Provider Ratings and Reviews,Marketplace Page > Reviews,High,Visual,Automated,"- Provider profile or service detail open","1. Locate ratings section
+2. Verify star rating or score
+3. Read individual reviews
+4. Check review authenticity indicators","- Overall rating displayed: '4.8/5' or '5 stars'
+- Number of reviews: '(23 reviews)'
+- Individual reviews show: Reviewer name, date, rating, comment
+- Recent reviews prioritized
+- No fake or spam reviews visible
+- Verified purchase badge (optional)",2m
+TL-099,Marketplace - Leave a Review,Marketplace Page > Reviews,Medium,Functional,Automated,"- User has purchased and received service
+- Logged in","1. Navigate to completed order
+2. Click 'Leave a Review'
+3. Rate service (1-5 stars)
+4. Write review text
+5. Submit review","- Review form opens
+- Star rating selector (1-5 stars)
+- Text area for comments
+- Character limit shown (e.g., 500 chars)
+- Submit button functional
+- Review appears after moderation/immediately
+- Confirmation message",3m
+TL-100,Marketplace - Service Filtering by Price,Marketplace Page > Filters,Medium,Functional,Automated,"- Marketplace page loaded","1. Locate price filter
+2. Set price range: $0-$100
+3. Verify results update
+4. Adjust range: $100-$500
+5. Clear filter","- Price filter control visible (slider or input)
+- Services filter to match range
+- Service count updates
+- Multiple ranges can be tested
+- Reset/clear filter button works
+- Filter persists during session",2m
+TL-101,Marketplace - Service Filtering by Delivery Time,Marketplace Page > Filters,Medium,Functional,Automated,"- Marketplace page loaded","1. Locate delivery time filter
+2. Select '24 hours' or 'Same day'
+3. Verify filtering
+4. Test other time options","- Delivery time options: '24 hours', '1-3 days', '1 week+', etc.
+- Services filter accordingly
+- Estimated delivery time shown on listings
+- Filter can be combined with others
+- Clear filter option",2m
+TL-102,Marketplace - Sort Services,Marketplace Page > Sorting,High,Functional,Automated,"- Marketplace page loaded","1. Locate sort dropdown
+2. Select 'Price: Low to High'
+3. Verify services re-order
+4. Test other sort options","- Sort options: Price (Low/High), Rating, Newest, Popular
+- Services re-order immediately
+- Sort applies to filtered results
+- Current sort option highlighted
+- Default sort shown on page load",2m
+TL-103,Marketplace - Pagination or Infinite Scroll,Marketplace Page > Navigation,Medium,Functional,Automated,"- Marketplace page loaded
+- More services than fit on screen","1. Scroll to bottom of service listings
+2. Verify more services load OR pagination controls appear
+3. Navigate to next page (if paginated)","- If infinite scroll: More services load automatically
+- If paginated: 'Next', page numbers, 'Previous' visible
+- Smooth loading (no jank)
+- User position preserved
+- Total page count shown (if paginated): 'Page 1 of 5'",2m
+TL-104,Marketplace - Account Dashboard Access,Marketplace Page > User Account,High,Functional,Automated,"- User logged in","1. Click on account/profile icon
+2. Navigate to dashboard
+3. Verify sections are visible","- Dashboard accessible from marketplace
+- Sections: Orders, Purchases, Favorites, Wallet
+- Order history shows past purchases
+- Active orders shown with status
+- Easy navigation back to marketplace",2m
+TL-105,Marketplace - Favorite/Save Services,Marketplace Page > User Actions,Medium,Functional,Automated,"- User logged in
+- Marketplace page loaded","1. Hover over service listing
+2. Click heart/star icon to favorite
+3. Navigate to favorites section
+4. Verify service is saved
+5. Remove from favorites","- Favorite icon visible on hover or always visible
+- Icon toggles: empty → filled
+- Service added to Favorites list
+- Favorites persist across sessions
+- Easy to remove from favorites
+- Favorites accessible from dashboard",2m
+TL-106,Marketplace - Service Inquiry/Message Provider,Marketplace Page > Communication,Medium,Functional,Automated,"- Service detail page open
+- User logged in","1. Click 'Contact Provider' or 'Ask a Question'
+2. Write message in form
+3. Send message
+4. Verify delivery","- Contact form or messaging interface opens
+- User can write message
+- Character limit if applicable
+- Message sends successfully
+- Confirmation: 'Message sent'
+- Provider receives notification
+- Message thread accessible in dashboard",2m
+TL-107,Marketplace - Terms of Service Agreement,Marketplace Page > Legal,High,Functional,Automated,"- Initiating first purchase","1. Proceed to checkout
+2. Verify Terms of Service acceptance
+3. Read terms (if linked)
+4. Accept and proceed","- ToS agreement required before first purchase
+- Checkbox: 'I agree to Terms of Service'
+- Terms linked (opens in new tab or modal)
+- Cannot proceed without acceptance
+- Acceptance recorded
+- Date of acceptance logged",2m
+TL-108,Marketplace - Dispute Resolution Process,Marketplace Page > Support,Medium,Functional,Manual,"- Service delivered but issue exists
+- User logged in","1. Navigate to order in dashboard
+2. Click 'Report Issue' or 'Dispute'
+3. Fill out dispute form
+4. Submit dispute
+5. Verify case opened","- Dispute option available within timeframe (e.g., 7 days)
+- Dispute form: Issue type, Description, Evidence upload
+- Submit button functional
+- Dispute case ID generated
+- Email confirmation sent
+- Provider notified
+- Escrow funds held until resolution",5m
+TL-109,Marketplace - Service Refund Request,Marketplace Page > Payments,High,Functional,Manual,"- Service not delivered or unsatisfactory
+- Within refund window","1. Navigate to order
+2. Click 'Request Refund'
+3. Select reason
+4. Submit request
+5. Monitor status","- Refund button visible within policy window
+- Refund reasons: 'Not delivered', 'Unsatisfactory', 'Wrong service'
+- Form submission succeeds
+- Refund request pending review
+- Status updates in dashboard
+- Refund processed to original payment method/wallet",5m
+TL-110,Marketplace - Transaction History,Marketplace Page > User Account,High,Functional,Automated,"- User logged in
+- Multiple purchases made","1. Navigate to account dashboard
+2. Open 'Transaction History' or 'Orders'
+3. Verify all transactions listed","- All purchases listed chronologically
+- Each entry shows: Date, Service, Amount, Status
+- Status indicators: Completed, Pending, Disputed, Refunded
+- Transaction IDs displayed
+- Blockchain transaction links (for SOL payments)
+- Downloadable receipts",2m
+TL-111,Marketplace - Blockchain Transaction Verification,Marketplace Page > Web3 Integration,High,Functional,Automated,"- SOL payment made","1. Complete purchase with SOL
+2. Locate transaction ID in confirmation
+3. Click transaction ID link
+4. Verify on Solana Explorer","- Transaction ID (signature) provided
+- Link to Solana Explorer (solscan.io or solanaexplorer.com)
+- Transaction details visible: Amount, timestamp, block, status
+- Confirmation count shown
+- No failed transactions (unless intentional test)",3m
+TL-112,Marketplace - Smart Contract Interaction,Marketplace Page > Web3 Integration,Critical,Security,Manual,"- Developer tools available
+- Wallet connected","1. Initiate escrow transaction
+2. Inspect smart contract interaction
+3. Verify contract address is correct
+4. Check for proper authorization","- Smart contract address verified (match official docs)
+- Contract is audited (verify audit report availability)
+- User approves specific actions only
+- No unlimited allowances granted
+- Events emitted correctly
+- Gas fees reasonable",5m
+TL-113,Marketplace - Wallet Disconnect,Marketplace Page > Web3 Integration,High,Functional,Automated,"- Wallet connected","1. Click 'Disconnect Wallet' button
+2. Verify wallet disconnects
+3. Attempt actions requiring wallet
+4. Reconnect wallet","- Disconnect button visible when connected
+- Wallet disconnects immediately
+- Wallet address no longer displayed
+- Actions requiring wallet show 'Connect Wallet' prompt
+- User can reconnect smoothly
+- Session data cleared",2m
+TL-114,Marketplace - Multi-Wallet Support,Marketplace Page > Web3 Integration,Medium,Functional,Automated,"- Multiple wallets installed (Phantom, MetaMask, etc.)","1. Click 'Connect Wallet'
+2. Verify wallet options appear
+3. Select different wallets
+4. Test each wallet connection","- Wallet selection modal shows available wallets
+- Supported wallets: Phantom, MetaMask, Coinbase Wallet, WalletConnect
+- Each wallet connects successfully
+- User can switch wallets
+- Previous connection remembered (optional)",3m
+TL-115,Marketplace - Insufficient Funds Handling,Marketplace Page > Payments,High,Negative,Automated,"- Wallet connected
+- SOL balance < service price","1. Attempt to purchase service
+2. Proceed to payment
+3. Confirm transaction","- Error message: 'Insufficient funds'
+- Transaction fails gracefully
+- User prompted to add funds
+- Link to buy SOL (if helpful)
+- No partial payment processed
+- User can retry after adding funds",2m
+TL-116,Marketplace - Network Congestion Handling,Marketplace Page > Payments,Medium,Negative,Manual,"- Solana network congested (simulate or wait for high traffic)","1. Initiate payment during congestion
+2. Monitor transaction status
+3. Verify user is informed","- Transaction may take longer (still fast compared to other chains)
+- Status indicator: 'Processing transaction...'
+- User informed of delay
+- Transaction completes or fails with clear message
+- No stuck transactions
+- Retry option if failed",3m
+TL-117,Marketplace - Service Provider Onboarding,Marketplace Page > Provider Features,Medium,Functional,Manual,"- User wants to become service provider","1. Locate 'Become a Provider' or 'Sell Services' link
+2. Fill out application form
+3. Submit application
+4. Verify confirmation","- Clear CTA to become provider
+- Application form: Name, Email, Services offered, Experience, Portfolio
+- KYC requirements stated (if any)
+- Submission confirmation
+- Review timeline communicated: 'We'll review in 3-5 days'
+- Follow-up email sent",5m
+TL-118,Marketplace - Service Listing Creation,Marketplace Page > Provider Features,Medium,Functional,Manual,"- User is approved provider
+- Logged in","1. Navigate to provider dashboard
+2. Click 'Create New Service'
+3. Fill out service details: Title, Description, Price, Delivery time
+4. Upload images/assets
+5. Publish service","- Service creation form intuitive
+- Required fields marked
+- Rich text editor for description
+- Image upload: PNG, JPG, max 5MB
+- Price in USD and/or SOL
+- Preview option
+- Publish button saves and lists service
+- Service goes live immediately or after review",5m
+TL-119,Marketplace - Provider Earnings Dashboard,Marketplace Page > Provider Features,Medium,Functional,Manual,"- Provider with completed sales","1. Login as provider
+2. Navigate to earnings section
+3. Verify financial data","- Earnings overview: Total earned, Pending, Available
+- Transaction list with dates and amounts
+- Withdrawal/payout option
+- Fee breakdown: Platform fee (%), Net earnings
+- Charts or graphs (optional)
+- Export data (CSV)",3m
+TL-120,Marketplace - Payout/Withdrawal Request,Marketplace Page > Provider Features,High,Functional,Manual,"- Provider with available balance","1. Click 'Withdraw' or 'Request Payout'
+2. Enter amount
+3. Select payout method (crypto wallet or bank)
+4. Confirm withdrawal","- Withdrawal form: Amount field, Payout method selector
+- Minimum withdrawal amount stated
+- Processing time communicated: '1-3 business days' or 'Instant for crypto'
+- Confirmation required
+- Withdrawal processed
+- Email confirmation sent
+- Balance updates",5m
+TL-121,Marketplace - Search No Results,Marketplace Page > Search,Medium,Negative,Automated,"- Marketplace page loaded","1. Search for nonsense term: 'xyzabc123'
+2. Verify no results message","- 'No services found' message displayed
+- Helpful suggestions: 'Try different keywords' or 'Browse all services'
+- Search box remains visible for new search
+- Link back to all services
+- No error messages (404)",1m
+TL-122,Marketplace - Mobile Responsive Layout,Marketplace Page > Responsive,Critical,Responsive,Automated,"- Mobile viewport: 375x667px","1. Load marketplace on mobile
+2. Browse services
+3. Test filters and search
+4. Attempt purchase","- Service listings stack vertically
+- Images scale appropriately
+- Filters accessible (drawer or accordion)
+- Search box usable
+- Wallet connection works on mobile
+- Purchase flow functional
+- No horizontal scrolling",3m
+TL-123,Marketplace - Accessibility Compliance,Marketplace Page > Accessibility,High,Accessibility,Manual,"- Screen reader enabled","1. Navigate marketplace with keyboard only
+2. Tab through all elements
+3. Use screen reader to read content
+4. Check color contrast","- All interactive elements keyboard accessible
+- Focus indicators visible
+- Screen reader announces service titles, prices, buttons
+- Color contrast meets WCAG AA
+- Images have alt text
+- Forms have labels
+- No focus traps",5m
+TL-124,Marketplace - Service Image Optimization,Marketplace Page > Performance,Medium,Performance,Automated,"- Marketplace page loaded","1. Inspect service images
+2. Check file sizes and formats
+3. Verify lazy loading","- Images compressed (WebP format preferred)
+- File sizes reasonable: <200KB each
+- Lazy loading implemented (images load as user scrolls)
+- Thumbnails used in listings, full-size on detail view
+- No CLS (Cumulative Layout Shift)",2m
+TL-125,Marketplace - Page Load Performance,Marketplace Page > Performance,High,Performance,Automated,"- Clear browser cache","1. Open DevTools
+2. Navigate to marketplace
+3. Measure load time, FCP, LCP","- Page loads in under 3 seconds on 4G
+- First Contentful Paint (FCP) < 1.8s
+- Largest Contentful Paint (LCP) < 2.5s
+- Time to Interactive (TTI) < 3.5s
+- Lighthouse score > 90",2m
+TL-126,Marketplace - SEO Optimization,Marketplace Page > SEO,Medium,SEO,Automated,"- Marketplace page loaded","1. Inspect page source
+2. Check meta tags
+3. Verify structured data","- Title tag: 'Marketplace - On-Demand QA Services | Testify Labs'
+- Meta description compelling and < 160 chars
+- H1 tag: 'QA Services Marketplace'
+- Service listings have schema.org markup (Product or Service)
+- Canonical URL set
+- Open Graph tags for social sharing",2m
+TL-127,Marketplace - Service URL Structure,Marketplace Page > SEO,Medium,SEO,Automated,"- Service detail page open","1. Click on service
+2. Verify URL structure
+3. Test direct navigation with URL","- URLs are clean: /marketplace/manual-testing-service
+- No query parameters for service IDs: NOT /marketplace?id=123
+- URLs are shareable
+- Direct navigation works (deep linking)
+- Breadcrumbs or back button functional",1m
+TL-128,Marketplace - Error Handling 404,Marketplace Page > Error Handling,Medium,Negative,Automated,"- Browser ready","1. Navigate to invalid service URL: /marketplace/non-existent-service
+2. Verify 404 handling","- Custom 404 page displayed
+- 404 page maintains site branding
+- Helpful message: 'Service not found'
+- Link back to marketplace
+- Search box to find other services
+- No stack trace or technical errors",1m
+TL-129,Marketplace - Error Handling API Failure,Marketplace Page > Error Handling,High,Negative,Manual,"- Mock API to return 500 error","1. Load marketplace with API failure
+2. Verify error handling","- Error message: 'Unable to load services. Please try again.'
+- Retry button provided
+- Page doesn't break completely
+- Fallback UI shown (skeleton or placeholder)
+- Error logged for debugging
+- User not stuck",2m
+TL-130,Marketplace - Browser Compatibility,Marketplace Page > Compatibility,High,Compatibility,Manual,"- Multiple browsers available","1. Test marketplace on Chrome, Firefox, Safari, Edge
+2. Verify core functionality
+3. Test wallet connections","- Marketplace works on all major browsers
+- Web3 features work (wallet connection)
+- Layout consistent across browsers
+- Performance acceptable
+- Known issues documented (e.g., Safari Web3 limitations)",5m

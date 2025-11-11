@@ -1,0 +1,289 @@
+ID,Title,Section,Priority,Type,Automation Type,Preconditions,Steps,Expected Result,Estimated Time
+TL-029,Contact Page - Page Load and Display,Contact Page > Page Load,Critical,Smoke,Automated,"- Browser is ready
+- User has internet connection","1. Navigate to https://testifysolutions.net/contact/
+2. Wait for page to fully load
+3. Verify page title
+4. Check for main content sections","- Page loads within 3 seconds
+- Page title contains 'Contact' or 'Contact Us'
+- No 404 or 500 errors
+- Header and footer are visible
+- Main contact form is visible",1m
+TL-030,Contact Form - All Fields Display,Contact Page > Form Display,Critical,Visual,Automated,"- Contact page loaded","1. Locate the main contact form
+2. Identify all form fields
+3. Verify field labels are visible
+4. Check for required field indicators","- Name field visible with label
+- Email field visible with label
+- Phone field visible (if present)
+- Message/Comment textarea visible
+- Submit button is visible and enabled
+- Required fields marked with asterisk or 'Required' label",1m
+TL-031,Contact Form - Valid Submission,Contact Page > Form Functionality,Critical,Functional,Automated,"- Contact page loaded
+- Form is empty","1. Fill in Name: 'John Doe'
+2. Fill in Email: 'john.doe@example.com'
+3. Fill in Phone: '+1-555-0123' (if present)
+4. Fill in Message: 'Test message for QA purposes'
+5. Click Submit button
+6. Wait for response","- Form submits successfully
+- Success message displayed: 'Thank you' or 'Message sent'
+- Form clears after submission OR redirect to thank you page
+- No error messages appear
+- Confirmation email sent (verify if possible)",2m
+TL-032,Contact Form - Required Field Validation,Contact Page > Form Validation,Critical,Functional,Automated,"- Contact page loaded
+- Form is empty","1. Click Submit button without filling any fields
+2. Observe validation messages
+3. Verify form does not submit","- Error message appears for each required field
+- Messages are clear: 'Name is required', 'Email is required', etc.
+- Form does not submit
+- Error messages are displayed near respective fields
+- Focus moves to first invalid field",2m
+TL-033,Contact Form - Email Format Validation,Contact Page > Form Validation,Critical,Functional,Automated,"- Contact page loaded","1. Fill in Name: 'John Doe'
+2. Fill in Email: 'invalid-email'
+3. Fill in Message: 'Test'
+4. Click Submit
+5. Verify validation error
+6. Repeat with variations: '@example.com', 'test@', 'test@.com'","- Error message: 'Please enter a valid email address'
+- Form does not submit
+- Email field is highlighted/outlined in red
+- User can correct the email and resubmit
+- Valid format: test@example.com passes validation",2m
+TL-034,Contact Form - Name Field Validation,Contact Page > Form Validation,High,Functional,Automated,"- Contact page loaded","1. Test with empty name (already covered in TL-032)
+2. Test with single character: 'A'
+3. Test with numbers: '12345'
+4. Test with special chars: '@#$%'
+5. Test with very long name: 200+ characters
+6. Test with SQL injection: 'DROP TABLE users'","- Minimum length validation (if any)
+- Special characters handling (accept or reject consistently)
+- Maximum length enforced (typically 100-255 chars)
+- No SQL injection possible
+- XSS attempts blocked: '<script>alert(1)</script>'",3m
+TL-035,Contact Form - Phone Number Validation,Contact Page > Form Validation,High,Functional,Automated,"- Contact page loaded
+- Phone field is present","1. Test with valid formats: '+1-555-0123', '555-0123', '(555) 012-3456'
+2. Test with invalid: 'abc123', '123'
+3. Test with international: '+44 20 1234 5678'
+4. Leave blank (if optional)","- Valid formats accepted
+- Invalid formats rejected with clear error
+- International numbers accepted (if supported)
+- If optional: blank submission allowed
+- If required: blank submission blocked",2m
+TL-036,Contact Form - Message Field Validation,Contact Page > Form Validation,High,Functional,Automated,"- Contact page loaded","1. Leave message blank (if required)
+2. Enter 1 character
+3. Enter maximum allowed characters (find limit)
+4. Enter beyond maximum (if limit exists)
+5. Test with special characters and emojis
+6. Test with very long text: 5000+ characters","- Minimum length validation (typically 10+ chars)
+- Maximum length enforced (typically 500-5000 chars)
+- Character counter visible (if implemented)
+- Special characters and emojis handled gracefully
+- No truncation without warning",3m
+TL-037,Contact Form - Submit Button States,Contact Page > Form Functionality,High,Functional,Automated,"- Contact page loaded","1. Verify button initial state (enabled)
+2. Fill form and submit
+3. Observe button during submission
+4. Verify button after successful submission","- Button enabled initially
+- Button disabled during submission (prevents double-submit)
+- Button text changes: 'Submit' → 'Submitting...' or shows spinner
+- Button re-enables after submission completes
+- Button remains clickable after error",2m
+TL-038,Contact Form - Error Handling Network Failure,Contact Page > Error Handling,High,Negative,Automated,"- Contact page loaded
+- Network throttling or offline mode enabled","1. Fill out form completely with valid data
+2. Enable offline mode or disconnect internet
+3. Click Submit
+4. Observe error handling","- Error message displayed: 'Network error' or 'Please check your connection'
+- Form data is NOT lost
+- User can retry submission
+- No silent failure
+- Error message is user-friendly (not technical jargon)",2m
+TL-039,Contact Form - Server Error Handling (500),Contact Page > Error Handling,High,Negative,Automated,"- Contact page loaded
+- Mock server to return 500 error","1. Fill out form with valid data
+2. Submit form (server returns 500)
+3. Observe error handling","- Error message: 'Something went wrong. Please try again later.'
+- Form data preserved
+- User can retry
+- Error logged for debugging (check console)
+- Contact email or phone provided as alternative",2m
+TL-040,Contact Form - Duplicate Submission Prevention,Contact Page > Security,Critical,Functional,Automated,"- Contact page loaded","1. Fill form with valid data
+2. Click Submit button rapidly 5 times
+3. Verify only one submission goes through","- Button disables after first click
+- Only one request sent to server (check network tab)
+- No duplicate emails sent
+- Success message shown once",2m
+TL-041,Contact Form - XSS Prevention,Contact Page > Security,Critical,Security,Automated,"- Contact page loaded","1. Enter XSS payload in Name: '<script>alert(""XSS"")</script>'
+2. Enter XSS in Message: '<img src=x onerror=alert(1)>'
+3. Submit form
+4. Check if scripts execute","- Scripts do NOT execute
+- Data is sanitized before display
+- Success page does not show unsanitized input
+- Backend sanitizes before storing
+- No alert boxes appear",2m
+TL-042,Contact Form - SQL Injection Prevention,Contact Page > Security,Critical,Security,Automated,"- Contact page loaded","1. Enter SQL payload in Name: 'admin'' OR ''1''=''1'
+2. Enter in Email: 'test@example.com; DROP TABLE users;--'
+3. Submit form
+4. Verify form handles safely","- Form submission succeeds or fails gracefully
+- No database errors exposed to user
+- Backend uses parameterized queries (assumed)
+- No data corruption
+- Application remains functional",2m
+TL-043,Contact Form - CSRF Protection,Contact Page > Security,High,Security,Manual,"- Two browser tabs open
+- One with contact form loaded","1. Load contact form in Tab 1
+2. Inspect form HTML for CSRF token
+3. Copy form HTML to Tab 2
+4. Try to submit from Tab 2
+5. Verify rejection","- Form includes CSRF token (hidden field or header)
+- Submission from different origin/tab is rejected
+- Error message: 'Invalid request' or 'Session expired'
+- Legitimate submissions still work",3m
+TL-044,Contact Form - Field Character Encoding,Contact Page > Form Validation,Medium,Functional,Automated,"- Contact page loaded","1. Enter non-ASCII characters in Name: 'José García', 'Müller', '中文'
+2. Enter accented chars in message: 'Café, naïve'
+3. Submit form
+4. Verify data is preserved","- All Unicode characters accepted
+- Data stored correctly without corruption
+- Confirmation displays correct characters
+- Email received shows correct encoding",2m
+TL-045,Contact Form - Autofill Compatibility,Contact Page > Usability,Medium,Functional,Automated,"- Browser autofill enabled
+- User has saved contact information","1. Click in Name field
+2. Select autofill suggestion
+3. Verify all fields populate correctly
+4. Submit form","- Autofill suggestions appear
+- Fields populate with correct data
+- Email, Name, Phone all map correctly
+- Form can be submitted with autofilled data
+- No JavaScript errors",1m
+TL-046,Contact Form - Tab Navigation,Contact Page > Accessibility,High,Accessibility,Automated,"- Contact page loaded","1. Click in Name field
+2. Press Tab key
+3. Verify focus moves to Email
+4. Continue tabbing through all fields
+5. Verify tab order is logical","- Tab order follows visual layout: Name → Email → Phone → Message → Submit
+- Focus is visibly indicated (outline or highlight)
+- No focus trap
+- Shift+Tab navigates backwards
+- Submit button is reachable via keyboard",2m
+TL-047,Contact Form - Screen Reader Compatibility,Contact Page > Accessibility,High,Accessibility,Manual,"- Screen reader enabled (NVDA, JAWS, or VoiceOver)","1. Navigate to contact page
+2. Tab through form
+3. Verify screen reader announces:
+   - Field labels
+   - Required fields
+   - Error messages
+   - Success messages","- All labels are announced
+- Required fields identified: 'Name, required field'
+- Error messages read aloud
+- Instructions are clear
+- ARIA labels present where needed",5m
+TL-048,Contact Form - Mobile Responsiveness,Contact Page > Responsive,High,Responsive,Automated,"- Mobile viewport: 375x667px","1. Load contact page on mobile viewport
+2. Verify form layout
+3. Fill out form on mobile
+4. Submit form","- Form fields stack vertically
+- Input fields are sized appropriately (not too small)
+- Labels remain visible
+- Submit button is easily tappable (min 44x44px)
+- No horizontal scrolling
+- Virtual keyboard doesn't obscure submit button",2m
+TL-049,Contact Form - Placeholder Text,Contact Page > Usability,Medium,Visual,Automated,"- Contact page loaded","1. Observe placeholder text in each field
+2. Click in field and verify placeholder disappears
+3. Type text and verify placeholder not visible
+4. Clear field and verify placeholder returns","- Placeholder text is helpful: 'Enter your full name', 'you@example.com'
+- Placeholder disappears on focus or input
+- Placeholder is not used as label (labels are separate)
+- Placeholder text has sufficient color contrast
+- Placeholder reappears if field cleared",1m
+TL-050,Booking Widget - Display and Load,Contact Page > Booking Widget,Critical,Functional,Automated,"- Navigate to contact page with hash: /contact/#booking-app","1. Navigate to testifysolutions.net/contact/#booking-app
+2. Verify page scrolls to booking section
+3. Verify booking widget/calendar loads
+4. Check for iframe or embedded tool","- Page auto-scrolls to booking section
+- Booking widget is visible
+- Calendar/scheduling interface loads
+- No 'Failed to load' errors
+- Widget is interactive (can click dates)",2m
+TL-051,Booking Widget - Date Selection,Contact Page > Booking Widget,Critical,Functional,Automated,"- Booking widget loaded","1. Open booking calendar
+2. Select a date in the future
+3. Verify available time slots appear
+4. Select a time slot
+5. Proceed to next step","- Calendar displays current and future months
+- Past dates are disabled
+- Available dates are clickable
+- Time slots appear after date selection
+- Selected date is highlighted
+- Time slots respect business hours",3m
+TL-052,Booking Widget - Form Submission,Contact Page > Booking Widget,Critical,Functional,Automated,"- Date and time selected in booking widget","1. Fill in booking form: Name, Email, Phone
+2. Add any notes/reason for meeting
+3. Click 'Schedule' or 'Book Appointment'
+4. Verify confirmation","- Form submits successfully
+- Confirmation message: 'Your appointment is scheduled'
+- Confirmation email sent to user
+- Calendar invite received (if supported)
+- User can add to their calendar (Google, Outlook, etc.)",3m
+TL-053,Booking Widget - Timezone Handling,Contact Page > Booking Widget,High,Functional,Automated,"- Booking widget loaded","1. Check if timezone is detected or selectable
+2. Select different timezone (if option exists)
+3. Verify time slots adjust accordingly
+4. Book appointment","- User's timezone auto-detected OR
+- Timezone selector visible
+- Time slots display in correct timezone
+- Confirmation shows timezone: '10:00 AM PST'
+- No confusion about meeting time",2m
+TL-054,Booking Widget - Conflict Prevention,Contact Page > Booking Widget,High,Functional,Manual,"- Multiple users booking simultaneously","1. User A selects time slot 10:00 AM
+2. User B tries to select same slot
+3. User A completes booking
+4. Verify User B's view updates","- Booked slots become unavailable in real-time
+- User B sees updated availability
+- No double-booking possible
+- Clear message if slot becomes unavailable",3m
+TL-055,Booking Widget - Cancellation/Rescheduling,Contact Page > Booking Widget,High,Functional,Manual,"- Appointment already booked","1. Locate cancellation/reschedule link (in confirmation email or on site)
+2. Click link
+3. Select new date/time or cancel
+4. Verify changes","- Cancellation link works
+- User can reschedule easily
+- Cancellation confirmation sent
+- Slot becomes available again after cancellation",3m
+TL-056,Newsletter Signup - Display,Contact Page > Newsletter,Medium,Visual,Automated,"- Contact page loaded","1. Scroll through contact page
+2. Locate newsletter signup form
+3. Verify elements are visible","- Newsletter section visible
+- Email input field present
+- Subscribe button present
+- Privacy policy link visible (if required by law)
+- Clear description of what user will receive",1m
+TL-057,Newsletter Signup - Valid Subscription,Contact Page > Newsletter,High,Functional,Automated,"- Newsletter section visible","1. Enter valid email: 'subscriber@example.com'
+2. Click Subscribe button
+3. Wait for response","- Success message: 'You're subscribed!' or 'Check your email'
+- Confirmation email sent
+- User added to mailing list
+- No duplicate subscriptions (if already subscribed: 'You're already subscribed')",2m
+TL-058,Newsletter Signup - Invalid Email,Contact Page > Newsletter,High,Functional,Automated,"- Newsletter section visible","1. Enter invalid email: 'not-an-email'
+2. Click Subscribe
+3. Verify error","- Error message: 'Please enter a valid email'
+- Form does not submit
+- User can correct and resubmit",1m
+TL-059,Newsletter Signup - Already Subscribed,Contact Page > Newsletter,Medium,Functional,Automated,"- User already subscribed with email","1. Enter already-subscribed email
+2. Click Subscribe
+3. Verify response","- Message: 'You're already subscribed!' or 'This email is already registered'
+- No error (friendly message)
+- Option to unsubscribe provided (link)
+- No duplicate database entries",2m
+TL-060,Newsletter Signup - GDPR Compliance,Contact Page > Newsletter,High,Legal,Manual,"- Newsletter section visible
+- User in EU region (or simulate)","1. Check for GDPR consent checkbox
+2. Verify privacy policy link is present
+3. Try to submit without checking consent (if checkbox exists)
+4. Verify data processing statement","- Consent checkbox present for EU users OR
+- Clear statement about data processing
+- Privacy policy link functional
+- Cannot subscribe without consent (if required)
+- Unsubscribe option mentioned",2m
+TL-061,Contact Info - Display,Contact Page > Contact Information,Medium,Visual,Automated,"- Contact page loaded","1. Locate contact information section
+2. Verify all contact methods are displayed
+3. Check for accuracy","- Email address displayed: testifysolutionsinc@gmail.com
+- Social media links present (LinkedIn, Twitter/X, Telegram)
+- Physical address (if applicable)
+- Phone number (if provided)
+- Business hours (if provided)
+- All information is up-to-date",1m
+TL-062,Contact Info - Email Link,Contact Page > Contact Information,Medium,Functional,Automated,"- Contact info visible","1. Click email address link
+2. Verify email client opens
+3. Check pre-populated fields","- Default email client opens
+- 'To:' field pre-populated with testifysolutionsinc@gmail.com
+- Subject line may be pre-filled (optional)
+- User can compose and send email",1m
+TL-063,Contact Page - Load Time Performance,Contact Page > Performance,Medium,Performance,Automated,"- Clear browser cache","1. Open DevTools Performance tab
+2. Navigate to contact page
+3. Measure page load time
+4. Check Largest Contentful Paint (LCP)","- Page loads in under 3 seconds on 4G
+- LCP under 2.5 seconds
+- No render-blocking resources
+- Critical content loads first (form visible quickly)
+- Booking widget can lazy-load",2m

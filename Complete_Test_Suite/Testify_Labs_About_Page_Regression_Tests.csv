@@ -1,0 +1,178 @@
+ID,Title,Section,Priority,Type,Automation Type,Preconditions,Steps,Expected Result,Estimated Time
+TL-064,About Page - Page Load and Display,About Page > Page Load,High,Smoke,Automated,"- Browser ready","1. Navigate to https://testifysolutions.net/about/
+2. Wait for page to fully load
+3. Verify page title
+4. Check main content","- Page loads within 3 seconds
+- Page title contains 'About' or 'About Us'
+- Header and footer visible
+- Main content section loaded
+- No 404 errors",1m
+TL-065,About Page - Company Mission Statement,About Page > Content,High,Visual,Automated,"- About page loaded","1. Locate mission/vision statement
+2. Verify heading and content
+3. Check for clarity and completeness","- Mission statement clearly stated
+- Text is readable and well-formatted
+- No lorem ipsum or placeholder text
+- Statement aligns with homepage value prop
+- Content is inspiring and professional",1m
+TL-066,About Page - Company History Section,About Page > Content,Medium,Visual,Automated,"- About page loaded","1. Scroll to company history/timeline section
+2. Verify content is present
+3. Check for key milestones","- History section present (if applicable)
+- Timeline or narrative format
+- Key dates mentioned: founding, major achievements
+- Content is factual and professional
+- Images or graphics support narrative (if present)",2m
+TL-067,About Page - Team Section Display,About Page > Team,High,Visual,Automated,"- About page loaded","1. Scroll to team members section
+2. Count number of team members displayed
+3. Verify information for each member","- Team section heading: 'Our Team', 'Meet the Team', etc.
+- Each member has: Photo, Name, Role/Title
+- Photos are professional quality
+- Names and titles are accurate
+- Layout is clean (grid or list format)",2m
+TL-068,About Page - Team Member Photos,About Page > Team,Medium,Visual,Automated,"- Team section visible","1. Verify all team member photos load
+2. Check image quality and aspect ratio
+3. Verify consistent styling","- All photos load successfully (no broken images)
+- Photos are uniform size/shape
+- Professional quality images
+- Consistent aspect ratio (e.g., all square or all portrait)
+- Alt text present for accessibility",1m
+TL-069,About Page - Team Member Bio/Details,About Page > Team,Medium,Functional,Automated,"- Team section visible","1. Click on team member card (if interactive)
+2. Verify bio or details appear
+3. Check for social links (LinkedIn, etc.)","- If clickable: Modal or expanded view appears
+- Bio text is informative
+- Social media links present (LinkedIn most common)
+- Links open in new tab
+- Close/back button functional",2m
+TL-070,About Page - Values Section,About Page > Content,High,Visual,Automated,"- About page loaded","1. Locate company values section
+2. Verify all values are listed
+3. Check descriptions","- Values section present (e.g., 'Our Values', 'What We Stand For')
+- Typically 3-6 core values listed
+- Each value has clear description
+- Icons or graphics support values (optional)
+- Content is genuine and not generic",2m
+TL-071,About Page - Services Overview,About Page > Content,High,Content,Automated,"- About page loaded","1. Locate services or offerings section
+2. Verify services are listed
+3. Check for consistency with other pages","- Services mentioned align with homepage
+- Key services: On-demand QA, Testing Framework, Marketplace
+- Brief descriptions provided
+- Links to detailed service pages (if applicable)
+- No contradictions with other page content",2m
+TL-072,About Page - Call-to-Action Buttons,About Page > CTA,High,Functional,Automated,"- About page loaded","1. Identify all CTA buttons on page
+2. Verify button text and styling
+3. Click each CTA
+4. Verify destinations","- Common CTAs: 'Contact Us', 'Get Started', 'Learn More'
+- Buttons are visually prominent
+- Hover states work
+- CTAs redirect correctly:
+  - Contact Us → /contact/
+  - Get Started → /marketplace/ or /contact/
+  - Learn More → relevant service page",2m
+TL-073,About Page - Social Proof Elements,About Page > Social Proof,Medium,Visual,Automated,"- About page loaded","1. Look for testimonials section
+2. Check for client logos or case studies
+3. Verify statistics or achievements","- Testimonials present with: Quote, Name, Company, Photo (optional)
+- Client/partner logos displayed (if any)
+- Statistics: '1,000+ Successful Deployments', etc.
+- Awards or certifications (if applicable)
+- Content is credible and specific",2m
+TL-074,About Page - Company Culture Section,About Page > Content,Low,Visual,Automated,"- About page loaded","1. Look for culture or workplace section
+2. Check for photos or descriptions
+3. Verify authenticity","- Culture section present (optional)
+- Office photos or team photos
+- Description of work environment
+- Benefits or perks mentioned (if recruiting)
+- Content feels authentic (not stock photos)",2m
+TL-075,About Page - Locations/Contact Info,About Page > Contact,Medium,Visual,Automated,"- About page loaded","1. Locate contact information
+2. Verify address (if physical location)
+3. Check for map or directions","- Email address visible
+- Physical address (if applicable)
+- Embedded Google Maps (optional)
+- Phone number (if provided)
+- Link to full contact page",1m
+TL-076,About Page - Responsive Design Mobile,About Page > Responsive,High,Responsive,Automated,"- Mobile viewport: 375x667px","1. Load about page on mobile
+2. Scroll through entire page
+3. Verify layout adapts
+4. Test interactions","- Content stacks vertically
+- Team member cards resize or stack
+- Images scale appropriately
+- Text remains readable (font size adequate)
+- No horizontal scrolling
+- Buttons remain tappable",2m
+TL-077,About Page - Responsive Design Tablet,About Page > Responsive,Medium,Responsive,Automated,"- Tablet viewport: 768x1024px","1. Load about page on tablet
+2. Verify layout
+3. Test landscape and portrait","- Layout uses available space well
+- 2-column layouts where appropriate
+- Images and text balanced
+- Navigation works smoothly
+- Portrait and landscape both functional",2m
+TL-078,About Page - Content Readability,About Page > Accessibility,High,Accessibility,Automated,"- About page loaded","1. Check text size and font
+2. Verify line height and spacing
+3. Check color contrast
+4. Test with browser zoom at 200%","- Font size minimum 16px (or scalable)
+- Line height 1.5 or greater
+- Color contrast ratio meets WCAG AA (4.5:1 for normal text)
+- Page remains usable at 200% zoom
+- No text truncation at zoom levels",2m
+TL-079,About Page - Heading Structure,About Page > Accessibility,Medium,Accessibility,Automated,"- About page loaded","1. Inspect heading tags (H1, H2, H3, etc.)
+2. Verify hierarchy is logical
+3. Use screen reader to navigate by headings","- Single H1: Page title ('About Us')
+- H2 for main sections: Team, Mission, Values, etc.
+- H3 for subsections
+- No skipped heading levels (H1 → H3 without H2)
+- Screen reader can navigate by headings",2m
+TL-080,About Page - Image Alt Text,About Page > Accessibility,High,Accessibility,Automated,"- About page loaded","1. Inspect all images
+2. Verify alt attributes are present
+3. Check quality of alt text","- All images have alt attributes
+- Decorative images: alt='' (empty)
+- Meaningful images: descriptive alt text
+- Team photos: 'Photo of [Name], [Role]'
+- No 'image.jpg' or generic alt text",1m
+TL-081,About Page - Link Text Clarity,About Page > Accessibility,Medium,Accessibility,Automated,"- About page loaded","1. Review all link text on page
+2. Verify links are descriptive
+3. Check for 'click here' or 'read more' without context","- No vague link text like 'click here' or 'read more'
+- Links are descriptive: 'Learn about our testing services'
+- Link purpose clear from text alone
+- External links indicated (icon or text)
+- Links have :focus styles",1m
+TL-082,About Page - Video Content (if present),About Page > Media,Medium,Functional,Automated,"- About page loaded
+- Video section visible","1. Locate company video or demo
+2. Verify video player loads
+3. Play video
+4. Test controls","- Video player loads (YouTube, Vimeo, or native)
+- Play button functional
+- Video plays without buffering (on normal connection)
+- Controls visible: play/pause, volume, fullscreen
+- Captions available (for accessibility)
+- Video is relevant and professional",2m
+TL-083,About Page - Load Performance,About Page > Performance,Medium,Performance,Automated,"- Clear browser cache","1. Open DevTools
+2. Navigate to about page
+3. Measure load time and LCP
+4. Check for large images","- Page loads in under 3 seconds
+- LCP under 2.5 seconds
+- Images are optimized (compressed)
+- No render-blocking resources
+- Lazy loading for below-fold images",2m
+TL-084,About Page - Content Accuracy,About Page > Content,Critical,Manual,Manual,"- About page loaded
+- Access to source documentation","1. Read all content on about page
+2. Verify against company documentation
+3. Check for outdated information
+4. Verify team member accuracy","- All information is accurate and current
+- Team members are current employees
+- No outdated achievements or stats
+- Company name and branding consistent
+- No typos or grammatical errors",5m
+TL-085,About Page - SEO Metadata,About Page > SEO,Medium,SEO,Automated,"- About page loaded","1. Inspect page source
+2. Verify meta tags
+3. Check Open Graph tags","- Title tag: 'About Us - Testify Labs' or similar
+- Meta description present and compelling (150-160 chars)
+- Relevant keywords included naturally
+- Open Graph tags for social sharing:
+  - og:title
+  - og:description
+  - og:image
+- Canonical URL set",2m
+TL-086,About Page - Navigation Breadcrumbs,About Page > Navigation,Low,Visual,Automated,"- About page loaded","1. Look for breadcrumb navigation
+2. Verify breadcrumb trail
+3. Test breadcrumb links","- Breadcrumbs present: Home > About
+- Breadcrumbs styled clearly
+- Links work: Home links to homepage
+- Current page (About) not linked or styled differently
+- Structured data for breadcrumbs (optional)",1m
