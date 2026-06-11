@@ -25,6 +25,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: process.env.BASE_URL || 'https://testifysolutions.net',
+    
+    /* Bypass Cloudflare Rate Limiting via WAF Custom Header */
+    extraHTTPHeaders: {
+      'X-QA-Bypass-Token': process.env.CF_BYPASS_TOKEN || '',
+    },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
