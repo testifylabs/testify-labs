@@ -245,9 +245,9 @@ test.describe('Testify Solutions Homepage Regression', () => {
     async ({ page }) => {
       testifyCase('TL-010', 'Social Proof - Partner Logos Display');
 
-      const moralis = page.locator('img[src*="Moralis"]');
-      const solana = page.locator('img[src*="solana"]');
-      const chainlink = page.locator('img[src*="Chainlink"]');
+      const moralis = page.locator('img[src*="Moralis"]').first();
+      const solana = page.locator('img[src*="solana"]').first();
+      const chainlink = page.locator('img[src*="Chainlink"]').first();
 
       await moralis.scrollIntoViewIfNeeded();
       await expect(moralis).toBeVisible();
@@ -260,9 +260,9 @@ test.describe('Testify Solutions Homepage Regression', () => {
     testifyCase('TL-011', 'Social Proof - Logo Links');
 
     const logos = [
-      page.locator('img[src*="Moralis"]'),
-      page.locator('img[src*="solana"]'),
-      page.locator('img[src*="Chainlink"]'),
+      page.locator('img[src*="Moralis"]').first(),
+      page.locator('img[src*="solana"]').first(),
+      page.locator('img[src*="Chainlink"]').first(),
     ];
 
     for (const logo of logos) {
