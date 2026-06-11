@@ -11,7 +11,10 @@
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report",
     "lint": "eslint \"**/*.ts\"",
-    "format": "prettier --write \"**/*.ts\""
+    "format": "prettier --write \"**/*.ts\"",
+    "allure:generate": "allure generate ./allure-results --clean",
+    "allure:open": "allure open ./allure-report",
+    "allure:serve": "allure serve ./allure-results"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,8 @@
     "@playwright/test": "^1.58.2",
     "@typescript-eslint/eslint-plugin": "^8.61.0",
     "@typescript-eslint/parser": "^8.61.0",
+    "allure-commandline": "^2.42.1",
+    "allure-playwright": "^3.10.0",
     "dotenv": "^17.4.2",
     "eslint": "^10.4.1",
     "eslint-plugin-playwright": "^2.10.4",

@@ -213,4 +213,5 @@ test-results/
 blob-report/
 npm-debug.log*
 yarn-error.log*
-
+allure-results/
+allure-report/
