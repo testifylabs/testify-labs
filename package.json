@@ -1,0 +1,44 @@
+{
+  "name": "testify-labs",
+  "version": "1.0.0",
+  "description": "Assets Hub for Testify Labs",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:testify": "playwright test --grep @testify --project=chromium",
+    "test:headed": "playwright test --headed",
+    "test:headed:testify": "playwright test --grep @testify --project=chromium --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "lint": "eslint \"**/*.ts\"",
+    "format": "prettier --write \"**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testifylabs/testify-labs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/testifylabs/testify-labs/issues"
+  },
+  "homepage": "https://github.com/testifylabs/testify-labs#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.58.2",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.4.1",
+    "eslint-plugin-playwright": "^2.10.4",
+    "kiro": "^1.0.0",
+    "playwright-bdd": "^9.0.0",
+    "prettier": "^3.8.4",
+    "typescript-eslint": "^8.61.0"
+  },
+  "dependencies": {
+    "csv-parse": "^6.2.1"
+  }
+}
