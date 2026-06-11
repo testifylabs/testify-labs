@@ -1,11 +1,15 @@
 import { test, expect } from '@playwright/test';
 import { testifyCase } from './helpers/testify-case';
+import { ContactPage } from './pages/ContactPage';
 
 const CONTACT_URL = 'https://testifysolutions.net/contact-us/';
 
 test.describe('Testify Solutions Contact Page Regression', () => {
+  let contactPage: ContactPage;
+
   test.beforeEach(async ({ page }) => {
-    await page.goto(CONTACT_URL, { waitUntil: 'domcontentloaded' });
+    contactPage = new ContactPage(page);
+    await contactPage.goto();
   });
 
   test(
@@ -22,11 +26,7 @@ test.describe('Testify Solutions Contact Page Regression', () => {
       });
 
       await expect(page).toHaveTitle(/Contact/i);
-      
-      const heading = page.getByRole('heading', { name: /Contact/i });
-      await expect(heading.first()).toBeVisible();
-
-      // Ensure no major console errors during load
+      await expect(contactPage.heading.first()).toBeVisible();
       expect(consoleErrors, 'no console errors on contact page').toEqual([]);
     },
   );
@@ -34,22 +34,14 @@ test.describe('Testify Solutions Contact Page Regression', () => {
   test(
     'TL-030: Contact Form Field Display',
     { tag: ['@testify', '@contact', '@TL-030'] },
-    async ({ page }) => {
+    async () => {
       testifyCase('TL-030', 'Contact Form Field Display');
-
-      // Common form selectors (adjust based on actual form plugin used by Testify)
-      const form = page.locator('form').filter({ hasText: /Contact|Message|Submit/i }).first();
-      await expect(form).toBeVisible({ timeout: 15000 });
-
-      // Looking for typical input fields
-      const nameInput = form.getByRole('textbox', { name: /name/i }).or(form.locator('input[name*="name" i]'));
-      const emailInput = form.getByRole('textbox', { name: /email/i }).or(form.locator('input[type="email" i]'));
-      const submitButton = form.getByRole('button', { name: /submit|send/i }).or(form.locator('input[type="submit" i]'));
-
-      await expect(nameInput.first()).toBeVisible();
-      await expect(emailInput.first()).toBeVisible();
-      await expect(submitButton.first()).toBeVisible();
-      await expect(submitButton.first()).toBeEnabled();
+      
+      await expect(contactPage.form).toBeVisible({ timeout: 15000 });
+      await expect(contactPage.nameInput.first()).toBeVisible();
+      await expect(contactPage.emailInput.first()).toBeVisible();
+      await expect(contactPage.submitBtn.first()).toBeVisible();
+      await expect(contactPage.submitBtn.first()).toBeEnabled();
     },
   );
 
@@ -59,20 +51,11 @@ test.describe('Testify Solutions Contact Page Regression', () => {
     async ({ page }) => {
       testifyCase('TL-032', 'Contact Form Required Field Validation');
       
-      const form = page.locator('form').filter({ hasText: /Contact|Message|Submit/i }).first();
-      const submitButton = form.getByRole('button', { name: /submit|send/i }).or(form.locator('input[type="submit" i]'));
-      
-      await submitButton.first().click();
+      await contactPage.submitBtn.first().click();
 
-      // Note: Because this is a live production test, we specifically DO NOT fill out valid data 
-      // to avoid spamming the inbox. We expect validation messages or the form to refuse submission.
-      
-      // Look for standard HTML5 validation or custom error classes
-      // This is a generic check to ensure *some* validation UI appears or the page doesn't navigate
       await expect(page).toHaveURL(CONTACT_URL);
       
-      // Check for common error text
-      const hasErrorText = await form.locator('text=/required|invalid|please|error/i').count();
+      const hasErrorText = await contactPage.form.locator('text=/required|invalid|please|error/i').count();
       const html5Validation = await page.evaluate(() => {
         const invalidInputs = document.querySelectorAll(':invalid');
         return invalidInputs.length > 0;
@@ -85,17 +68,10 @@ test.describe('Testify Solutions Contact Page Regression', () => {
   test(
     'TL-050: Booking Widget Display and Load',
     { tag: ['@testify', '@contact', '@TL-050'] },
-    async ({ page }) => {
+    async () => {
       testifyCase('TL-050', 'Booking Widget Display and Load');
-
-      // Go specifically to the booking hash
-      await page.goto(`${CONTACT_URL}#booking-app`);
-
-      // Look for typical booking widgets like Calendly, HubSpot, or custom
-      const bookingWidget = page.locator('#booking-app, iframe[src*="calendly"], iframe[src*="meetings"], .booking-widget').first();
-      
-      // Wait for it to become visible, giving it extra time as iframes can be slow
-      await expect(bookingWidget).toBeVisible({ timeout: 15000 });
+      await contactPage.gotoBooking();
+      await expect(contactPage.bookingWidget).toBeVisible({ timeout: 15000 });
     },
   );
 });
