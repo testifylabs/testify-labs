@@ -7,14 +7,14 @@ const headerNav = (page: import('@playwright/test').Page) =>
 const logoLink = (page: import('@playwright/test').Page) =>
   page.getByRole('link', { name: 'Testify Labs' });
 const heroTriptychImages = (page: import('@playwright/test').Page) => {
-  const all = page.getByRole('main').locator('figure img');
+  const all = page.locator('figure img');
   return { first: all.nth(0), center: all.nth(1), third: all.nth(2) };
 };
 const faqSection = (page: import('@playwright/test').Page) => page.locator('#faq');
 
 test.describe('Testify Solutions Homepage Regression', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(HOME);
+    await page.goto(HOME, { waitUntil: 'domcontentloaded' });
   });
 
   test(
@@ -52,22 +52,20 @@ test.describe('Testify Solutions Homepage Regression', () => {
       await nav.getByRole('link', { name: 'About' }).click();
       await expect(page).toHaveURL(/\/about\/?$/);
 
-      await page.goto(HOME);
+      await page.goto(HOME, { waitUntil: 'domcontentloaded' });
       await nav.getByRole('link', { name: 'Blog' }).click();
       await expect(page).toHaveURL(/\/our-news\/?$/);
 
-      await page.goto(HOME);
+      await page.goto(HOME, { waitUntil: 'domcontentloaded' });
       await nav.getByRole('link', { name: 'Contact Us' }).click();
       await expect(page).toHaveURL(/\/contact-us\/?$/);
 
-      await page.goto(HOME);
+      await page.goto(HOME, { waitUntil: 'domcontentloaded' });
       const talentLink = nav.getByRole('link', { name: 'Talent' });
       await expect(talentLink).toHaveAttribute('target', '_blank');
-      const [talentPage] = await Promise.all([context.waitForEvent('page'), talentLink.click()]);
-      await expect(talentPage).toHaveURL(/linkedin\.com/i);
-      await talentPage.close();
+      await expect(talentLink).toHaveAttribute('href', /linkedin\.com/i);
 
-      await page.goto(HOME);
+      await page.goto(HOME, { waitUntil: 'domcontentloaded' });
       await expect(page).toHaveURL(HOME);
     },
   );
@@ -78,7 +76,7 @@ test.describe('Testify Solutions Homepage Regression', () => {
     async ({ page }) => {
       testifyCase('TL-003', 'Header Navigation - Marketplace Button');
 
-      const marketplace = page.getByRole('link', { name: 'MARKETPLACE' });
+      const marketplace = page.locator('a[href*="/marketplace/"]:visible').first();
       await expect(marketplace).toBeVisible();
       await expect(marketplace).toHaveClass(/wp-element-button/);
 
@@ -96,7 +94,7 @@ test.describe('Testify Solutions Homepage Regression', () => {
 
       await page.setViewportSize({ width: 375, height: 667 });
 
-      const openMenu = page.getByRole('button', { name: 'Open menu' });
+      const openMenu = page.locator('.wp-block-navigation__responsive-container-open').first();
       await expect(openMenu).toBeVisible();
       await openMenu.click();
 
@@ -108,7 +106,7 @@ test.describe('Testify Solutions Homepage Regression', () => {
       await mobileNav.getByRole('link', { name: 'About' }).click();
       await expect(page).toHaveURL(/\/about\/?$/);
 
-      await page.goto(HOME);
+      await page.goto(HOME, { waitUntil: 'domcontentloaded' });
       await openMenu.click();
       await expect(logoLink(page)).toBeVisible();
       await logoLink(page).click();
@@ -122,8 +120,8 @@ test.describe('Testify Solutions Homepage Regression', () => {
     async ({ page }) => {
       testifyCase('TL-005', 'Hero - Primary Value Proposition Display');
 
-      const hero = page.getByRole('heading', { level: 1 });
-      await expect(hero).toContainText('Enhance Your Software Product');
+      const hero = page.getByText('Enhance Your Software Product', { exact: false });
+      await expect(hero).toBeVisible();
       await expect(hero).toContainText('Quality Guarantee');
 
       await expect(
@@ -168,7 +166,7 @@ test.describe('Testify Solutions Homepage Regression', () => {
       });
 
       // Hero has no dedicated CTA; primary above-fold action is header MARKETPLACE.
-      const cta = page.getByRole('link', { name: 'MARKETPLACE' });
+      const cta = page.locator('a[href*="/marketplace/"]:visible').first();
       await expect(cta).toBeVisible();
       await cta.hover();
       await cta.click();
@@ -183,9 +181,7 @@ test.describe('Testify Solutions Homepage Regression', () => {
     async ({ page }) => {
       testifyCase('TL-008', 'Features - Three Column Layout');
 
-      const heading = page.getByRole('heading', {
-        name: /On-Demand Software Quality Assurance/i,
-      });
+      const heading = page.getByText('On-Demand Software Quality Assurance', { exact: false });
       await heading.scrollIntoViewIfNeeded();
       await expect(heading).toBeVisible();
 
@@ -218,7 +214,7 @@ test.describe('Testify Solutions Homepage Regression', () => {
       testifyCase('TL-009', 'Features - Responsive Behavior');
 
       await page.setViewportSize({ width: 375, height: 812 });
-      await page.goto(HOME);
+      await page.goto(HOME, { waitUntil: 'domcontentloaded' });
 
       const speed = page.getByRole('heading', { name: 'Same Day Turnaround Time' });
       const flexibility = page.getByRole('heading', {

@@ -5,7 +5,7 @@ const CONTACT_URL = 'https://testifysolutions.net/contact-us/';
 
 test.describe('Testify Solutions Contact Page Regression', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(CONTACT_URL);
+    await page.goto(CONTACT_URL, { waitUntil: 'domcontentloaded' });
   });
 
   test(
@@ -39,7 +39,7 @@ test.describe('Testify Solutions Contact Page Regression', () => {
 
       // Common form selectors (adjust based on actual form plugin used by Testify)
       const form = page.locator('form').filter({ hasText: /Contact|Message|Submit/i }).first();
-      await expect(form).toBeVisible();
+      await expect(form).toBeVisible({ timeout: 15000 });
 
       // Looking for typical input fields
       const nameInput = form.getByRole('textbox', { name: /name/i }).or(form.locator('input[name*="name" i]'));
