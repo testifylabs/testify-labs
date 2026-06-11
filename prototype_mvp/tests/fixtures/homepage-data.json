@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "heading": "Enhance Your Software Product",
+    "subtext1": "Elevate your SDLC with our proprietary testing framework",
+    "subtext2": "Software Testing"
+  },
+  "features": {
+    "heading": "On-Demand Software Quality Assurance",
+    "speed": "Speed",
+    "flexibility": "Flexibility",
+    "reliability": "Reliability"
+  },
+  "cta": {
+    "heading": "Try On-Demand quality assurance",
+    "availability": "24/7 Availability",
+    "guarantee": "Immutable Guarantee"
+  }
+}
